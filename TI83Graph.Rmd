@@ -1,0 +1,18 @@
+---
+title: "Graphing"  
+---
+
+#### To fix the "INVALID DIM" error:
+
+[2nd][STAT PLOT] Turn off all plots in this menu.
+
+If that doesn't work, clear memory by
+
+[2nd][MEM][7][1]
+
+#### After clearing the error, here is how to enter the original and shifted functions:
+
+![Functions](C:\Users\Luciano\TI83\Function.png)
+
+#### Here are the graphs of the functions:
+![Graph](C:\Users\Luciano\TI83\Graph.png)

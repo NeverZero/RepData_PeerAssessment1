@@ -1,0 +1,63 @@
+---
+title: "NonIdealGas"
+author: "NeverZero"
+date: "Sunday, February 08, 2015"
+output: html_document
+---
+
+This is the Clausius equation for nonideal gases:
+
+$$RT=(P+\frac{a}{T(V_{m}+c)^2})(V_{m}-b)$$
+
+where 
+
+$$a=\frac{27R^2T_{c}^3}{64P_{c}}$$
+
+$$b=V_{c}-\frac{RT_{c}}{4P_{c}}$$
+
+$$c=\frac{3RT_{c}}{8P_{c}}-V_{c}$$
+
+
+```{r}
+# Molar mass, Vm=V/n, where n= moles of H2, V= reactor volume
+#n=.00705 # moles of H2
+n=.022
+Vm=1.09E-6/n # n moles of H2 in 1.09 cm^3 
+Tc<-33.2 # K
+Vc<-65.5/100^3 # m^3/mole (lit value= 65.5 cm^3/mole)
+Pc<-1300E3 #Pa
+R<-8.314 # J/(K*mole)
+T<-500+271 # K
+a<-27*R^2*Tc^3/(64*Pc)
+b<-Vc-R*Tc/(4*Pc)
+c<-3*R*Tc/(8*Pc)-Vc
+P1=R*T/(Vm-b)-a/(T*(Vm+c)^2) # Pressure in Pa
+P1/1e5*14.5 # Pressure in psi
+```
+
+
+This is the Redlich-Kwong equation for nonideal gases:
+
+$$RT=P(V_{m}-b)+\frac{a}{V_{m}(V_{m}+b)T^{1/2}}(V_{m}-b)$$
+
+where 
+
+$$a=.4275\frac{R^{2}T_{c}^{2.5}}{P_{c}}$$
+
+$$b=.0867\frac{RT_{c}}{P_{c}}$$
+
+
+```{r}
+a<-0.4275*R^2*Tc^{2.5}/Pc
+b<-0.0867*R*Tc/Pc
+P2=R*T/(Vm-b)-a/(Vm*(Vm+b)*T^.5) # Pressure in Pa
+P2/1e5*14.5
+```
+
+
+The ideal gas law is $PV=nRT$
+
+```{r}
+P=R*T/Vm
+P/1e5*14.5
+```
